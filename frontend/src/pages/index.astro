@@ -1,0 +1,71 @@
+---
+import Root from "../layouts/root.astro";
+
+const response = await fetch("http://localhost:8000/viewGames");
+---
+
+<Root>
+  <div class="flex items-center justify-center text-center">
+    <form action="http://localhost:8000/createGame" method="post">
+      <label class="form-control w-full max-w-xs">
+        <div class="label">
+          <span class="label-text"> Nombre </span>
+        </div>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="input input-bordered w-full max-w-xs"
+          minlength="1"
+          maxlength="100"
+          required
+        />
+      </label>
+
+      <label class="form-control w-full max-w-xs">
+        <div class="label">
+          <span class="label-text"> Desarrollador </span>
+        </div>
+        <input
+          type="text"
+          name="developer"
+          id="developer"
+          class="input input-bordered w-full max-w-xs"
+          minlength="1"
+          maxlength="50"
+          required
+        />
+      </label>
+
+      <label class="form-control w-full max-w-xs">
+        <div class="label">
+          <span class="label-text"> Distribuidor </span>
+        </div>
+        <input
+          type="text"
+          name="distributor"
+          id="distributor"
+          class="input input-bordered w-full max-w-xs"
+          minlength="1"
+          maxlength="50"
+          required
+        />
+      </label>
+
+      <label class="form-control w-full max-w-xs">
+        <div class="label">
+          <span class="label-text"> Fecha de Lanzamiento </span>
+        </div>
+        <input
+          type="date"
+          name="released"
+          id="released"
+          class="input input-bordered w-full max-w-xs"
+          required
+        />
+      </label>
+
+      <button class="btn btn-md btn-accent">Agregar Juego</button>
+    </form>
+  </div>
+</Root>

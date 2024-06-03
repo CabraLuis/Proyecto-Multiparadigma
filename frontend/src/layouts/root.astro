@@ -1,0 +1,27 @@
+---
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Juegos!</title>
+  </head>
+  <body>
+    <div class="navbar bg-base-300">
+      <div class="navbar-start">
+        <a class="btn btn-ghost text-xl">Proyecto Multiparadigma: Videojuegos</a
+        >
+      </div>
+      <div class="navbar-center"></div>
+      <div class="navbar-end">
+        <a href="/" class="btn btn-accent">Agregar Juego</a>
+        <a href="/all" class="btn btn-secondary">Ver Juegos</a>
+      </div>
+    </div>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,52 @@
+---
+import Root from "../layouts/root.astro";
+
+const response = await fetch("http://localhost:8000/viewGames");
+const data = await response.json();
+---
+
+<Root>
+  <div class="flex justify-center">
+    <a href="http://localhost:8000/download" class="btn btn-primary btn-md"
+      >Descargar JSON</a
+    >
+  </div>
+  <div class="overflow-x-auto">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Desarrollador</th>
+          <th>Distribuidor</th>
+          <th>Lanzamiento</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          data.map((game: any) => (
+            <tr class="hover">
+              <th>{game.id}</th>
+              <td>{game.name}</td>
+              <td>{game.developer}</td>
+              <td>{game.distributor}</td>
+              <td>{game.released}</td>
+              <td>
+                <form
+                  action={`http://localhost:8000/deleteGame/${game.id}`}
+                  method="post"
+                >
+                  <button class="btn btn-xs btn-error">Eliminar</button>
+                </form>
+                <a href={`/${game.id}`} class="btn btn-xs btn-warning">
+                  Modificar
+                </a>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</Root>
